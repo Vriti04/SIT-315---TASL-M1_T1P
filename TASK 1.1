@@ -1,25 +1,27 @@
-const int SensorPin = 5; 
-const int ledPin = 12; 
+const int SensorPin = 5; //sensor to pin5
+const int ledPin = 12; //led to pin12
 
 
 void setup() {
 
-  Serial.begin(9600);
+  Serial.begin(9600);//communication with serial monitor begins
 
-  pinMode(SensorPin, INPUT);
+  pinMode(SensorPin, INPUT); //sensor pin set to input
 
-  pinMode(ledPin, OUTPUT);
+  pinMode(ledPin, OUTPUT); //led pin set to giving output
 }
 
 void loop() {
 
+//reading the data from sensor
   int motionDetected = digitalRead(SensorPin);
-  
+
+  //if motion detected, simply turn on LED and print on the serial monitor
   if (motionDetected == HIGH) {
     digitalWrite(ledPin, HIGH); 
     Serial.println("Motion detected");
     delay(500);
-  } else {
+  } else { //if not, print on monitor and keep LED off
     digitalWrite(ledPin, LOW); 
     Serial.println("Motion not detected");
     delay(500);
